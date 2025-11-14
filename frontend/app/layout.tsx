@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { FaSearch } from "react-icons/fa";
-import Image from "next/image";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { TbWorld } from "react-icons/tb";
-import { BiWorld } from "react-icons/bi";
+import HomeLayout from "@/components/HomeLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,58 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-            <nav className='w-full h-auto py-8 px-4 bg-linear-to-b from-white from-50% to-[#e0e0e0] text-black text-xl font-medium flex flex-col space-y-6 justify-center items-center'>
-              <div className="px-4 flex justify-between items-center w-full">
-                <Image src="/airbnb.webp" alt="Logo" width={120} height={60}/>
-                <div className="flex jutify-center space-x-5 items-center text-zinc-600 font-light text-base">
-                  <div className="border-b-3 border-black w-auto group flex justify-center items-center">
-                    <Image src="/navbar-home.avif" alt="Homes" width={60} height={60} className="inline group-hover:scale-110"/>
-                    <span className="font-bold">Homes</span>
-                  </div>
-                  <div className="border-b-3 border-black w-auto group flex justify-center items-center">
-                    <Image src="/navbar-experience.avif" alt="Homes" width={60} height={60} className="inline group-hover:scale-110"/>
-                    <span className="font-bold">Experiences</span>
-                  </div>
-                  <div className="border-b-3 border-black w-auto group flex justify-center items-center">
-                    <Image src="/navbar-services.avif" alt="Homes" width={60} height={60} className="inline group-hover:scale-110"/>
-                    <span className="font-bold">Services</span>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center space-x-3">
-                  <button className="bg-white rounded-full shadow px-5 py-3 text-base">Become a host</button>
-                  <button className="bg-[#c1c1c1] rounded-full p-2"><BiWorld fill="black"/></button>
-                  <button className="bg-[#c1c1c1] rounded-full p-2"><GiHamburgerMenu fill="black"/></button>
-                </div>
-                </div>
-                <div>
-                  <form className="flex justify-center space-x-4 items-center rounded-full w-auto h-auto bg-white text-gray-600 p-4 shadow-xl text-base border border-gray-300">
-                    <div className="flex-col justify-center items-center border-r border-gray-200 px-2">
-                      <label className="text-bold text-black block">Where</label>
-                      <select name="where-destination" id="where-destination" defaultValue="Search Destinations" className="self-start block">Search Destinations
-                        <option value="Sydney">Sydney</option>
-                        <option value="Sydney">Sydney</option>
-                        <option value="Sydney">Sydney</option>
-                        <option value="Sydney">Sydney</option>
-                        <option value="Sydney">Sydney</option>
-                        <option value="Sydney">Sydney</option>
-                      </select>
-                    </div>
-                    <div className="flex-col justify-center items-center border-r border-gray-200 px-2>
-                      <label>Check-in</label>
-                      <input type="date" name="check-in" />
-                    </div>
-                    <div>
-                      <input type="date" name="check-out"/>
-                    </div>
-                    <div>
-                      <input type="date" name="check-in"/>
-                    </div>
-                    <button type="submit" className="bg-airbnb hover:bg-airbnb-dark p-3 rounded-full fill-white text-white"><FaSearch className="text-white fill-white"/></button>
-                  </form>
-                </div>
-            </nav>
+        <HomeLayout />
         {children}
-      </body>
-    </html>
+      </body >
+    </html >
   );
 }
