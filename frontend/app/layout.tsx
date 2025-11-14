@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-            <nav className='w-full h-auto py-8 px-4 bg-linear-to-b from-white to-[#c1c1c1] text-black text-xl font-medium flex flex-col space-y-6 justify-center items-center'>
+            <nav className='w-full h-auto py-8 px-4 bg-linear-to-b from-white from-50% to-[#e0e0e0] text-black text-xl font-medium flex flex-col space-y-6 justify-center items-center'>
               <div className="px-4 flex justify-between items-center w-full">
                 <Image src="/airbnb.webp" alt="Logo" width={120} height={60}/>
                 <div className="flex jutify-center space-x-5 items-center text-zinc-600 font-light text-base">
@@ -56,9 +56,10 @@ export default function RootLayout({
                 </div>
                 </div>
                 <div>
-                  <form className="flex justify-center space-x-4 items-center rounded-full w-auto h-auto bg-white p-4 shadow-2xl text-lg">
-                    <div>
-                      <select name="where-destination" id="where-destination">Where
+                  <form className="flex justify-center space-x-4 items-center rounded-full w-auto h-auto bg-white text-gray-600 p-4 shadow-xl text-base border border-gray-300">
+                    <div className="flex-col justify-center items-center border-r border-gray-200 px-2">
+                      <label className="text-bold text-black block">Where</label>
+                      <select name="where-destination" id="where-destination" defaultValue="Search Destinations" className="self-start block">Search Destinations
                         <option value="Sydney">Sydney</option>
                         <option value="Sydney">Sydney</option>
                         <option value="Sydney">Sydney</option>
@@ -67,8 +68,9 @@ export default function RootLayout({
                         <option value="Sydney">Sydney</option>
                       </select>
                     </div>
-                    <div>
-                      <input type="date" name="check-in"/>
+                    <div className="flex-col justify-center items-center border-r border-gray-200 px-2>
+                      <label>Check-in</label>
+                      <input type="date" name="check-in" />
                     </div>
                     <div>
                       <input type="date" name="check-out"/>
