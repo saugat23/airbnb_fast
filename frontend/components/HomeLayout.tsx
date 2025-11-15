@@ -1,13 +1,35 @@
+"use client";
 import Image from "next/image";
 import { BiWorld } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useState, useEffect, useRef } from "react";
 
 const HomeLayout = () => {
+
+  const firstBar = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState<boolean>();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(!entry.isIntersecting);
+        console.log("Intersecting?", entry.isIntersecting);
+        console.log("isVisible state:", !entry.isIntersecting);
+        console.log(isVisible)
+      },
+      { threshold: 0 }
+    );
+
+    if (firstBar.current) observer.observe(firstBar.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <nav className='w-full h-auto bg-linear-to-b from-white to-[#e0e0e0] py-4 px-8 text-black text-xl font-medium flex flex-col space-y-6 justify-center items-center'>
-        <div className="p-8 flex justify-between items-center w-full">
+      <nav className='w-full h-auto bg-linear-to-b from-white to-[#e0e0e0] py-4 px-8 text-black text-xl font-medium flex flex-col space-y-6 justify-center items-center fixed top-0 overflow-hidden z-10'>
+        <div ref={firstBar} className="p-8 flex justify-between items-center w-full">
           <Image src="/airbnb.webp" alt="Logo" width={120} height={60} />
           <div className="flex jutify-center space-x-5 items-center text-zinc-600 font-light text-base">
             <div className="border-b-3 border-black w-auto group flex justify-center items-center">
